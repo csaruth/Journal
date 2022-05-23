@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>journal index</title>
+
+    <style>
+
+*{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+
+    }
+
+    nav{
+        height: 80px;
+        width: 100%;
+        background-color: darkcyan;
+        
+    }
+
+    nav label{
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 80px;
+        color: whitesmoke;
+    }
+
+    nav label p strong{
+            margin-left: 20px;
+        }
+
+    nav ul{
+        float: right;
+        line-height: 80px;
+        z-index: 10px;
+        margin-top: -80px;
+    }
+
+    nav ul li{
+        display: inline-block;
+        margin: 0 20px;
+        z-index: 1px;
+    }
+
+    nav ul li a{
+        color: whitesmoke;
+        font-size: 17px;
+        line-height: 80px;
+        border-radius: 3px;
+        padding: 12px 10px 12px 10px;
+    }
+
+    nav ul li a:hover{
+        background:rgb(19, 107, 107);
+        color:cyan;
+        transition: .5s all ease-in-out;
+        box-shadow: cyan 2px 2px 2px;
+    }
+
+    .checkbtn{
+        font-size: 25px;
+        color: yellowgreen;
+        float: right;
+        margin-right: 20px;
+        display: none;
+        cursor: pointer;
+    }
+
+    #check{
+        display: none;
+
+    }
+
+    @media (max-width:952px){
+        nav ul li a{
+            font-size: 16px;
+            line-height: 80px;
+            z-index: 5;
+        }
+
+
+    }
+
+    @media(max-width:750px){
+        .checkbtn{
+            display: block;
+        }
+
+        ul{
+            position: fixed;
+            width: 100%;
+            height: auto;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 5;
+            text-align: center;
+            border-radius: 3px;
+            top: 160px;
+            right: -100%;
+            transition: all .8s ease-in-out;
+            
+            
+        }
+
+        nav ul li{
+            display: block;
+            line-height: 50px;
+            border-bottom: 1px solid whitesmoke;
+            z-index: 5;
+        }
+
+        nav label p strong{
+            margin-left: 20px;
+            z-index: 5;
+        }
+
+        #check:checked~ul{
+            right: 0;
+            z-index: 5;
+        }
+    }
+
+nav label a{
+    color: whitesmoke;
+    z-index: 5;
+}
+
+body {
+    
+    
+    background-color: rgb(97, 200, 200);
+    background: linear-gradient(rgba(123, 168, 189, 0.4), rgba(26, 83, 87, 0.6),rgba(65, 94, 105, 0.4),rgba(0,0,0,0.9));
+
+}
+
+#main{
+  height: 35rem;
+  width: auto;
+  margin: 0px;
+  padding: 0px;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#main img{
+          border: 4px solid lightblue;
+          border-radius: 10px;
+        }
+
+@media (max-width:952px) {
+#sidebar{
+  position: absolute;
+  width: 200px;
+  height: 43rem;
+  background: rgb(19, 107, 107);
+  padding: 0px;
+  margin: 0px;
+  left: -200px;
+  transition: all 500ms linear;
+  z-index: 5;
+  color: whitesmoke;
+  font-family: cursive;
+  border-right: 2px solid blue;
+}
+
+
+#sidebar a{
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+#sidebar.active{
+  left: 7.6px;
+}
+
+#sidebar ul li{
+  color: whitesmoke;
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid whitesmoke;
+  margin-left: -39px;
+}
+
+#sidebar .toggle-btn{
+  position: absolute;
+  left: 210px;
+  top: 10px;
+}
+
+#sidebar .toggle-btn span{
+  display: block;
+  width: 30px;
+  height: 5px;
+  background: rgb(19, 107, 107);
+  margin: 3px 0px;
+  cursor: pointer;
+}
+
+#sidebar .social-icons{
+  height: 120px;
+  width: 200px;
+  position: relative;
+  top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#sidebar .developer{
+  height: 150px;
+  width: 200px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: cursive;
+  color: whitesmoke;
+}
+
+#sidebar .developer img{
+  border-radius: 40px;
+  height: 90px;
+  width: 80px;
+}
+
+#sidebar .social-icons img{
+padding: 2px;
+border: 2px solid rgb(19, 107, 107);
+border-radius: 3px;
+}
+
+}
+
+#glassmorphism{
+    width: 100%;
+    height: 450px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+}
+
+#glassmorphism .box{
+    position: relative;
+    width: 320px;
+    height: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 30px;
+    transition: 0.5s;
+}
+
+#glassmorphism .box::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 50%;
+    height: 100%;
+    background: rgb(90, 81, 175)
+    
+}
+
+#glassmorphism .box::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    border-radius: 8px;
+    transform: skewX(15deg);
+    transition: 0.5s;
+    filter: blur(30px);
+    transition: 0.5s;
+}
+
+#glassmorphism .box:hover:before,
+#glassmorphism .box:hover:before{
+    transform: skewX(0deg);
+    left: 20px;
+    width: calc(100% - 90px);
+}
+
+#glassmorphism .box:nth-child(1):before,
+#glassmorphism .box:nth-child(1):before{
+    background: linear-gradient(315deg,#ffbc00,#ff0058);
+}
+
+#glassmorphism .box:nth-child(2):before,
+#glassmorphism .box:nth-child(2):before{
+    background: linear-gradient(315deg,#03a9f4,#ff0058);
+}
+
+#glassmorphism .box:nth-child(3):before,
+#glassmorphism .box:nth-child(3):before{
+    background: linear-gradient(315deg,#00d,#00d0ff);
+}
+
+
+.box-content{
+
+z-index: 1;
+}
+
+#glassmorphism .box .box-content{
+    position: relative;
+    left: 0;
+    background: linear-gradient(255,255.255,0.1);
+    backdrop-filter: blur(15px);
+    z-index: 1;
+    height: 250px;
+    border-radius: 8px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: darkblue;
+    padding: 5px;
+    box-shadow: 1px 2px 5px 5px rgb(19, 107, 107);
+    font-family: cursive;
+    transition: 0.5s;
+}
+
+#glassmorphism .box .box-content:hover{
+    left: -25px;
+    padding: 60px 40px;
+    animation: animate 2s ease-in-out infinite;
+}
+
+@keyframes animate{
+    0%,100%
+    {
+        transform: translate(10px);
+    }
+    50%
+    {
+        transform: translate(-10px);
+    }
+}
+
+.Slider{
+            width: 800px;
+            height: 500px;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+            box-shadow: 1px 2px 10px 10px rgb(19, 107, 107);
+            overflow: hidden;
+        }
+
+        .slides{
+            height: 500px;
+            width: 500%;
+            display: flex;
+        }
+
+        .slides input{
+            display: none;
+        }
+
+        .slide{
+            width: 20%;
+            transition: 2s;
+
+        }
+
+        .slide img{
+            width: 800px;
+            height: 500px;
+        }
+
+        .navigation-manual{
+            position: absolute;
+            width: 800px;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+            
+        }
+
+        .manual-btn{
+            border: 3px solid silver;
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+
+        .manual-btn:not(:last-child){
+            margin-right: 40px;
+        }
+
+        .manual-btn:hover{
+            background: rgb(19, 107, 107);
+        }
+
+        #radio1:checked ~ #first{
+            margin-left: 0;
+        }
+        #radio2:checked ~ #first{
+            margin-left: -20%;
+        }
+        #radio3:checked ~ #first{
+            margin-left: -40%;
+        }
+        #radio4:checked ~ #first{
+            margin-left: -60%;
+        }
+        #radio5:checked ~ #first{
+            margin-left: -80%;
+        }
+
+        .navigation-auto{
+            position: absolute;
+            display: flex;
+            width: 800px;
+            justify-content: center;
+            margin-top: -40px;
+        }
+
+        .navigation-auto div{
+            border: 3px solid silver;
+            padding: 5px;
+            border-radius: 10px;
+            transition: 1s;
+            box-shadow: 1px 2px 5px 5px rgb(19, 107, 107);
+        }
+
+        .navigation-auto div:not(:last-child){
+            margin-right: 40px;
+        }
+
+        #radio1:checked ~ .navigation-auto.auto-btn1{
+            background: rgb(19, 107, 107);
+        }
+
+        #radio2:checked ~ .navigation-auto.auto-btn2{
+            background: rgb(19, 107, 107);
+        }
+
+        #radio3:checked ~ .navigation-auto.auto-btn3{
+            background: rgb(19, 107, 107);
+        }
+
+        #radio4:checked ~ .navigation-auto.auto-btn4{
+            background: rgb(19, 107, 107);
+        }
+
+        #radio5:checked ~ .navigation-auto.auto-btn5{
+            background: rgb(19, 10, 73);
+        }
+
+        h1 {
+            color: whitesmoke;
+        }
+
+    </style>
+
+</head>
+<body>
+    {% load static %}
+    <nav>
+        <input type="checkbox" name="" id="check">
+        <label for="check" class="checkbtn">MENU</label>
+        <label class="logo" for="nav"><p><strong></strong>JOURNAL</strong></p></a> </label>
+        <ul>
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'category' %}">CATEGORIES</a></li>
+        </ul>
+    </nav>
+
+
+    <div id="main">
+        
+        
+         <div class="Slider">
+           <div class="slides">
+               <input type="radio" name="radio-btn" id="radio1">
+               <input type="radio" name="radio-btn" id="radio2">
+               <input type="radio" name="radio-btn" id="radio3">
+               <input type="radio" name="radio-btn" id="radio4">
+               <input type="radio" name="radio-btn" id="radio5">
+       
+               <div class="slide" id="first">
+                   <img src="/static/images/fcbk.jpg" alt="image1">
+               </div>
+               <div class="slide">
+                   <img src="/static/images/gmail.png" alt="image2">
+               </div>
+               <div class="slide">
+                   <img src="/static/images/instagram.jpg" alt="image3">
+               </div>
+               <div class="slide">
+                   <img src="/static/images/linked.jpg" alt="image4">
+               </div>
+               <div class="slide">
+                   <img src="/static/images/twt.png" alt="image5">
+               </div>
+           </div>
+               <div class="navigation-auto">
+                   <div class="auto-btn1"></div>
+                   <div class="auto-btn2"></div>
+                   <div class="auto-btn3"></div>
+                   <div class="auto-btn4"></div>
+                   <div class="auto-btn5"></div>
+               </div>
+           
+           <div class="navigation-manual">
+               <label for="radio1" class="manual-btn"></label>
+               <label for="radio2" class="manual-btn"></label>
+               <label for="radio3" class="manual-btn"></label>
+               <label for="radio4" class="manual-btn"></label>
+               <label for="radio5" class="manual-btn"></label>
+           </div>
+           
+       </div>
+               <script>
+                   var counter = 1;
+                   setInterval(function(){
+                       document.getElementById('radio' + counter).checked = true;
+                       counter++;
+                       if(counter > 5){
+                           counter = 1;
+                       }
+                   },5000)
+               </script>
+        
+       </div>
+     
+         <div id="glassmorphism">
+           <div class="box">
+             <div class="box-content">
+                 <h3>LEARN MORE ABOUT US</h3>
+                 <p>We have the best of everything you need.</p>
+                 <li><a href="{% url 'about' %}">Read More</a></li>
+             </div>
+         </div>
+         <div class="box">
+             <div class="box-content">
+                 <h3>Do You Have A Question?</h3>
+                 <p>Get All The Answers To All Your Questions</p>
+                 <li><a href="{% url 'faq' %}">Get Answers</a></li>
+             </div>
+         </div>
+         <div class="box">
+             <div class="box-content">
+                 <h3>Would You Like To Contact Us</h3>
+                 <p>You Can Contact Us For Information Or Ideas</p>
+                 <li><a href="{% url 'contact' %}">Contact Us</a></li>
+             </div>
+         </div>
+         </div>
+        
+       </div>
+       
+       <footer id="main-footer">
+         <p>FBC &copy; 2021, All Rights Reserved</p>
+       </footer>
+     
+       <script>
+         function togglesidebar(){
+           document.getElementById("sidebar").classList.toggle('active');
+         }
+       </script>
+
+       
+
+</body>
+</html>

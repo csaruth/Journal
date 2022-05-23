@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>journal categies</title>
+
+    <style>
+
+*{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+
+    }
+
+
+    nav{
+        height: 80px;
+        width: 100%;
+        background-color: darkcyan;
+        
+    }
+
+    nav label{
+        font-size: 40px;
+        font-weight: bold;
+        line-height: 80px;
+        color: whitesmoke;
+    }
+
+    nav label p strong{
+            margin-left: 20px;
+        }
+
+    nav ul{
+        float: right;
+        line-height: 80px;
+        z-index: 10px;
+        margin-top: -80px;
+    }
+
+    nav ul li{
+        display: inline-block;
+        margin: 0 20px;
+        z-index: 1px;
+    }
+
+    nav ul li a{
+        color: whitesmoke;
+        font-size: 17px;
+        line-height: 80px;
+        border-radius: 3px;
+        padding: 12px 10px 12px 10px;
+    }
+
+    nav ul li a:hover{
+        background:rgb(19, 107, 107);
+        color:cyan;
+        transition: .5s all ease-in-out;
+        box-shadow: cyan 2px 2px 2px;
+    }
+
+    .checkbtn{
+        font-size: 25px;
+        color: yellowgreen;
+        float: right;
+        margin-right: 20px;
+        display: none;
+        cursor: pointer;
+        
+    }
+
+    #check{
+        display: none;
+
+    }
+
+    @media (max-width:952px){
+        nav ul li a{
+            font-size: 16px;
+            line-height: 80px;
+            z-index: 5;
+            
+            
+        }
+
+
+    }
+
+    @media(max-width:750px){
+        .checkbtn{
+            display: block;
+            z-index: 5;
+        
+        }
+
+        ul{
+            position: fixed;
+            width: 100%;
+            height: auto;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10px;
+            text-align: center;
+            border-radius: 3px;
+            top: 160px;
+            right: -100%;
+            transition: all .8s ease-in-out;
+            z-index: 5;
+            
+        }
+
+        nav ul li{
+            display: block;
+            line-height: 50px;
+            border-bottom: 1px solid whitesmoke;
+            z-index: 5;
+    
+            
+        }
+
+        nav label p strong{
+            margin-left: 20px;
+            z-index: 5;
+        }
+
+        #check:checked~ul{
+            right: 0;
+            z-index: 5;
+        }
+    }
+
+nav label a{
+    color: whitesmoke;
+}
+
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: space-between;
+    padding: 10px;
+    height: auto;
+    
+    
+}
+
+.pro{
+    height: auto;
+    width: 95%;
+    position: relative;
+    box-shadow: 4px 4px 4px silver ;
+    background-color:transparent;
+    padding: 10px;
+    display: flex;
+    word-wrap: break-word;
+    border-radius: 5px;
+    border-left: 1px solid gold;
+    flex-direction: column;
+}
+
+.pro1{
+    width: 28%;
+    height: 97%;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+.pro1 img{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+    {% load static %}
+    <nav>
+        <input type="checkbox" name="" id="check">
+        <label for="check" class="checkbtn">MENU</label>
+        <label class="logo" for="nav"><p><strong></strong>JOURNAL</strong></p></a> </label>
+        <ul>
+            <li><a href="{% url 'index' %}">HOME</a></li>
+            <li><a href="{% url 'about' %}">ABOUT</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+            <li><a href="{% url 'category' %}">CATEGORIES</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="main">
+        
+        
+        
+        {% for category in All_Category %}
+        <div class="pro">
+                <li> <h3><a href="{% url 'my_project' %}"> {{category.Name}} </a></h3> </li>
+                <li> {{category.Description}} </li>
+                 
+                <div class="pro1">
+                    <img src="{{Allprojects.Picture.url}}" alt="">
+                </div>
+        
+        </div>
+        {% endfor %}
+    </div>
+
+    
+
+</body>
+</html>
